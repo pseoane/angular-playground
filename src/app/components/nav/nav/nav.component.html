@@ -1,17 +1,12 @@
 <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
 	<li [ngbNavItem]="1">
-		<button ngbNavLink>One</button>
+		<button ngbNavLink>Apod</button>
 		<ng-template ngbNavContent>
-			<p>
-				Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-				master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
-				keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat
-				salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.
-			</p>
+			<app-apod></app-apod>
 		</ng-template>
 	</li>
 	<li [ngbNavItem]="2">
-		<button ngbNavLink>Two</button>
+		<button ngbNavLink>Heroes</button>
 		<ng-template ngbNavContent>
 			<app-heroes></app-heroes>
 		</ng-template>
