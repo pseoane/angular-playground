@@ -1,0 +1,8 @@
+<ul class="list-group list-group-numbered mt-1" *ngFor="let hero of heroesList; let i = index">
+    <li list-group-item>
+        <h5>{{hero.name}}</h5>
+        <p class="text-start">{{hero.description}}</p>
+        <button class="btn btn-danger float right" (click)="deleteHero(i)">Delete</button>
+        <hr/>
+    </li>
+</ul>

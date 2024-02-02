@@ -1,0 +1,30 @@
+<div class="container mt-5">
+    <div class="mb-3">
+        <input
+            type="text"
+            class="form-control"
+            name=""
+            id=""
+            placeholder="Hero's name"
+            [(ngModel)]="name"
+            (change)="valueChanged()"
+        />
+        <textarea
+            type="text"
+            class="form-control mt-3"
+            name=""
+            id=""
+            placeholder="Hero's description"
+            [(ngModel)]="description"
+            (change)="valueChanged()"
+        ></textarea>
+    </div>
+    <button
+        type="button"
+        class="btn btn-primary"
+        [disabled]="isDisabledButton()"
+        (click)="addHero()"
+    >
+        Add Hero
+    </button>
+</div>
