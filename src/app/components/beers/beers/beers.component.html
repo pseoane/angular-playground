@@ -1,0 +1,14 @@
+<div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-2 mx-2">
+    <div class="col" *ngFor="let beer of beers">
+      <div class="card h-10" >
+        <div class="card-body">
+          <h5 class="card-title">{{beer.name}}</h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        </div>
+        <div class="col-md-12 mx-2">
+            <img [src]="beer.imageUrl" class="img-fluid" alt="...">
+        </div>
+        
+      </div>
+    </div>
+  </div>
