@@ -10,7 +10,7 @@ export class Apod {
             this._title = data.title
             this._date = data.date
             this._explanation = data.explanation
-            this._hdUrl = data.hdUrl
+            this._hdUrl = data.hdurl
             this._url = data.url
         }
     }
