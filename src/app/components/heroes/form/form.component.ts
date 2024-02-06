@@ -1,7 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HeroService } from '@app/services/hero.service';
 import { Hero } from '@app/models/hero';
 import { FormService } from '@app/services/form.service';
 
