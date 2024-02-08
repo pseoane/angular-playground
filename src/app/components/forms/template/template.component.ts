@@ -18,7 +18,7 @@ export class TemplateComponent implements OnInit {
   countryNames: string[] = []
   submitted = false
 
-  constructor(private countryService: CountryFormService) {}
+  constructor(private countryService: CountryFormService) {console.log("Template component constructor") }
 
   onSubmit() {
     this.submitted = true

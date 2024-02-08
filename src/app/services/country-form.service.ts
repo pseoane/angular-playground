@@ -16,7 +16,7 @@ export class CountryFormService {
 
   getCountries() {
     console.log("getCountries() invoked")
-    this.http.get<any[]>("https://restcountries.com/v3.1/alfffl")
+    this.http.get<any[]>("https://restcountries.com/v3.1/all")
     .pipe(
       map((response: any[]) => response.map(e => new Country(e))),
     )

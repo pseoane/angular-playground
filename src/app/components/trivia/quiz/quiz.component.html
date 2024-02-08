@@ -1,0 +1,17 @@
+<div class="component mx-5">
+    <div class="row row-columns-1 mt-3 g-2">
+        <div class="col">
+            <div class="card mt-3" *ngFor="let question of questions">
+                <div class="card-body">
+                    <h4 class="card-title">{{question.question}}</h4>
+                    <div [ngSwitch]="question.questionType">
+                        <select class="form-select" *ngSwitchCase="'multiple'" name="answer" [(ngModel)]="question.userAnswer">
+                           <option *ngFor="let answer of question.allAnswers">{{answer}}</option>
+                       </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

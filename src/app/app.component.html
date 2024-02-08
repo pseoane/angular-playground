@@ -1,1 +1,16 @@
-<app-nav>
+<nav class="navbar navbar-expand navbar-dark bg-dark mb-2">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse">
+            <div class="navbar-nav">
+                <ul class="navbar-nav">
+                    <a class="nav-link" aria-current="page" routerLink="apod" [routerLinkActive]="['active']">Home</a>
+                    <a class="nav-link" routerLink="heroes" [routerLinkActive]="['active']">Heroes</a>
+                    <a class="nav-link" routerLink="beers" [routerLinkActive]="['active']">Beers</a>
+                    <a class="nav-link" routerLink="template" [routerLinkActive]="['active']">Template</a>
+                    <a class="nav-link" routerLink="trivia" [routerLinkActive]="['active']">Trivia</a>
+                  </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>
