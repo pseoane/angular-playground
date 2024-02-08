@@ -1,0 +1,42 @@
+<div class="container">
+    <form (ngSubmit)="onSubmit()" #heroForm="ngForm">
+        <div class="form-group mb-3">
+            <label for="name">Name</label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                [(ngModel)]="model.name"
+                #name="ngModel"
+                required pattern=".{2,10}"
+                placeholder="Mr. Hero"
+            />
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Name must contain between 2 and 20 characters</div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="alterEgo">Alter Ego</label>
+            <input type="text" class="form-control" id="alterEgo" [(ngModel)]="model.alterEgo" name="alterEgo" placeholder="The Diver">
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="power">Hero Power</label>
+            <select class="form-select" id="power" required [(ngModel)]="model.power" regex="//" name="power"
+             #power="ngModel">
+                <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+            </select>
+            <div [hidden]="power.valid || power.pristine" class="alert alert-danger">
+                Power is required
+            </div>
+        </div>
+
+        <div class="form-group mb-3">
+            <label for="typeahead-basic">Search for a state:</label>
+            <input id="typeahead-basic" name="country" type="text" class="form-control" [(ngModel)]="model.country" [ngbTypeahead]="search" />
+        </div>
+
+        <button type="submit" class="btn btn-success" [disabled]="!heroForm.form.valid">Submit</button>
+        <button type="button" class="btn btn-default" (click)="newHero(); heroForm.reset()">New Hero</button>
+    </form>
+</div>

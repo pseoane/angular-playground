@@ -1,4 +1,13 @@
-<mat-slider min="0" max="96" step="0.5" [displayWith]="formatLabel">
+<div class="row">
+    <div class="col">
+    {{"Min alcohol: " + lowerBound + "%"}}
+    </div>
+    <div class="col text-end">
+    {{"Max alcohol: " + higherBound + "%"}}
+    </div>
+</div>
+    <mat-slider min="0" max="96" step="0.5" class="mx-0">
     <input value="0" matSliderStartThumb (valueChange)="onValueChanged()" [(ngModel)]="lowerBound">
     <input value="96" matSliderEndThumb (valueChange)="onValueChanged()" [(ngModel)]="higherBound">
 </mat-slider>
+

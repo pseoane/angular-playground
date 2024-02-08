@@ -1,7 +1,6 @@
-
-<div class="container mt-2">
-<app-custom-slider (onRangeChanged)="filterBeers($event)"></app-custom-slider>
-  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-2 mt-5">
+<div class="container mt-5">
+  <app-custom-slider (onRangeChanged)="filterBeers($event)"></app-custom-slider>
+  <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 row-cols-xxl-6 g-2 mt-3">
     <div class="col-xs-12 col-sm-6 col-lg-4" *ngFor="let beer of beers">
       <div class="card h-100" >
         <div class="col-md-12 text-center mt-2">

@@ -17,6 +17,18 @@
 			<app-beers></app-beers>
 		</ng-template>
 	</li>
+	<li [ngbNavItem]="4">
+		<button ngbNavLink>Template</button>
+		<ng-template ngbNavContent>
+			<app-template></app-template>
+		</ng-template>
+	</li>
+	<li [ngbNavItem]="5">
+		<button ngbNavLink>Reactive form</button>
+		<ng-template ngbNavContent>
+			<app-reactive></app-reactive>
+		</ng-template>
+	</li>
 </ul>
 
 <div [ngbNavOutlet]="nav" class="mt-2"></div>

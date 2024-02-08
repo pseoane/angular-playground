@@ -1,0 +1,15 @@
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label>First name: 
+        <input type="text" formControlName="firstName">
+    </label>
+    <label>Last name
+        <input type="text" formControlName="lastName">
+    </label>
+
+    <div formArrayName="aliases">
+        <h3>Aliases</h3> <button (click)="addAlias()">Add alias</button>
+        <div *ngFor="let alias of aliases.controls; let i=index">
+            <label>Alias: <input type="text" [formControlName]="i"></label>
+        </div>
+    </div>
+</form>
