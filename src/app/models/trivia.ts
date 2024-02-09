@@ -9,7 +9,9 @@ export class TriviaQuestion {
     question: string
     correctAnswer: string
     incorrectAnswers: string[]
-    userAnswer: string | boolean | undefined = ""
+    userAnswer: string | undefined = ""
+    allAnswers: string[]
+    isCorrect: boolean | undefined
     
     constructor(data: any) {
         this.questionType = data["type"]
@@ -18,10 +20,7 @@ export class TriviaQuestion {
         this.correctAnswer = decodeURIComponent(data["correct_answer"])
         this.category = data["category"]
         this.incorrectAnswers = data["incorrect_answers"].map((e: string) => decodeURIComponent(e))
-    }
-
-    get allAnswers() {
-        return [this.correctAnswer, ...this.incorrectAnswers].sort()
+        this.allAnswers = [this.correctAnswer, ...this.incorrectAnswers].sort()
     }
 }
 

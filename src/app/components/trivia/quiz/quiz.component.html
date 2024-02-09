@@ -1,17 +1,43 @@
-<div class="component mx-5">
-    <div class="row row-columns-1 mt-3 g-2">
-        <div class="col">
-            <div class="card mt-3" *ngFor="let question of questions">
-                <div class="card-body">
-                    <h4 class="card-title">{{question.question}}</h4>
-                    <div [ngSwitch]="question.questionType">
-                        <select class="form-select" *ngSwitchCase="'multiple'" name="answer" [(ngModel)]="question.userAnswer">
-                           <option *ngFor="let answer of question.allAnswers">{{answer}}</option>
-                       </select>
+<div class="component mx-5 my-4 pb-5">
+    <h1>Trivia</h1>
+    <form (ngSubmit)="submitQuestions()" #heroForm="ngForm">
+        <div class="row row-columns-1 g-2">
+            <div class="col">
+                <div class="card mt-3" *ngFor="let question of questions; let i = index">
+                    <div class="card-body">
+                        <h4 class="card-title">{{question.question}}</h4>
+                        <div class="form-group" [ngSwitch]="question.questionType" id="FG{{i}}">
+                            <select class="form-select" *ngSwitchCase="'multiple'" name="answer" [(ngModel)]="question.userAnswer" id="{{i}}">
+                                <option *ngFor="let answer of question.allAnswers">{{answer}}</option>
+                            </select> 
+                            <div *ngSwitchCase="'boolean'">
+                                <div>
+                                    <input class="form-check-input" type="radio" id="True{{i}}" name="Radio{{i}}" [value]="'True'" [(ngModel)]="question.userAnswer">
+                                    <label class="form-check-label ms-2" for="True{{i}}">
+                                      True
+                                    </label>
+                                  </div>
+                                <div>
+                                    <input class="form-check-input" type="radio" id="False{{i}}" name="Radio{{i}}" [value]="'False'" [(ngModel)]="question.userAnswer">
+                                    <label class="form-check-label ms-2" for="False{{i}}">
+                                      False
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="alert alert-success mt-3 mb-0" [hidden]="question.isCorrect == undefined || !question.isCorrect">
+                            Correct!!
+                        </div>
+                        <div class="alert alert-danger mt-3 mb-0" [hidden]="question.isCorrect == undefined || question.isCorrect">
+                            Correct answer was {{question.correctAnswer}}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    
+        <div class="mt-4 al">
+            <button type="submit" class="btn btn-success">Check my Answers</button>
+            <button type="button" class="btn btn-default" (click)="newQuestions()">New Questions</button>
+        </div>
+    </form>
 </div>

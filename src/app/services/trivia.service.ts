@@ -17,24 +17,30 @@ export class TriviaService {
     return this._questionsSubject$.asObservable()
   }
 
-  answerQuestion(index: number, answer: string | boolean) {
-    if (index > 0 && index < this._questions.length) {
-      this._questions[index].userAnswer = answer
-      this._questionsSubject$.next([...this._questions])
+  validate(questions: TriviaQuestion[]) {
+    if (questions.length == this._questions.length) {
+      let answers = [...questions]
+      answers.forEach((question, index) => {
+         question.isCorrect = this._questions[index].correctAnswer == question.userAnswer
+      })
+      this._questionsSubject$.next(answers)
     }
   }
 
-  getQuestions(amount: number) {
-    this.http.get<any[]>(
-      this.BASE_URL, {params: {"amount": amount, "encode": "url3986"}}
-    ).pipe(
-      map((response: any) => response["results"].map((q: any) => new TriviaQuestion(q)))
-    ).subscribe({
-      next: (questions) => {
-        this._questions = questions
-        this._questionsSubject$.next([...this._questions])
-      },
-      error: err => console.log(`An error has ocurred: ${err}`)
-    })
+  getQuestions(amount: number, force: boolean = false) {
+    if (force || this._questions.length == 0) {
+      this.http.get<any[]>(
+        this.BASE_URL, {params: {"amount": amount, "encode": "url3986"}}
+      ).pipe(
+        map((response: any) => response["results"].map((q: any) => new TriviaQuestion(q)))
+      ).subscribe({
+        next: (questions) => {
+          console.log("Received")
+          this._questions = questions
+          this._questionsSubject$.next([...this._questions])
+        },
+        error: err => console.log(`An error has ocurred: ${err}`)
+      })
+    }
   }
 }

@@ -17,9 +17,16 @@ export class QuizComponent implements OnInit {
   constructor(private service: TriviaService) {}
 
   ngOnInit(): void {
-    this.service.questions$.subscribe(questions => this.questions = questions)
+    this.service.questions$.subscribe(questions => {this.questions = questions; console.log(questions)})
     this.service.getQuestions(10)
   }
 
+  submitQuestions() {
+    this.service.validate(this.questions)
+  }
 
+  newQuestions() {
+    this.questions = []
+    this.service.getQuestions(10, true)
+  }
 }
